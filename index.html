@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Admission Form</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+        :root {
+            --primary-color: #4f46e5;
+            --primary-hover: #4338ca;
+            --bg-gradient-start: #f3f4f6;
+            --bg-gradient-end: #e5e7eb;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-color: #1f2937;
+            --label-color: #4b5563;
+            --input-border: #d1d5db;
+            --input-focus: #4f46e5;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary-color: #6366f1;
+                --primary-hover: #818cf8;
+                --bg-gradient-start: #0f172a;
+                --bg-gradient-end: #1e293b;
+                --card-bg: rgba(30, 41, 59, 0.95);
+                --text-color: #f3f4f6;
+                --label-color: #cbd5e1;
+                --input-border: #475569;
+                --input-focus: #6366f1;
+                --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+            }
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            color: var(--text-color);
+        }
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            padding: 2.5rem;
+            transform: translateY(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--primary-color), #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        p.subtitle {
+            color: var(--label-color);
+            font-size: 0.95rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--label-color);
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        input {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border-radius: 12px;
+            border: 2px solid var(--input-border);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+        input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+        input:focus+label {
+            color: var(--primary-color);
+        }
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary-color), #ec4899);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            margin-top: 1rem;
+        }
+        .btn-submit:hover {
+            opacity: 0.95;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+        /* Micro-animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .form-group {
+            animation: fadeIn 0.5s ease backwards;
+        }
+        .form-group:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        .form-group:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .form-group:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+        .form-group:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+        .btn-submit {
+            animation: fadeIn 0.5s ease backwards 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Admission Form</h1>
+            <p class="subtitle">Join our community today</p>
+        </header>
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="studentName">Name of Student</label>
+                <input type="text" id="studentName" name="studentName" placeholder="Enter student's full name" required>
+            </div>
+            <div class="form-group">
+                <label for="parentName">Name of Father/Mother</label>
+                <input type="text" id="parentName" name="parentName" placeholder="Enter parent's name" required>
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="tel" id="mobile" name="mobile" placeholder="Enter mobile number" pattern="[0-9]{10}"
+                    title="10 digit mobile number" required>
+            </div>
+            <div class="form-group">
+                <label for="whatsapp">WhatsApp Number</label>
+                <input type="tel" id="whatsapp" name="whatsapp" placeholder="Enter WhatsApp number" pattern="[0-9]{10}"
+                    title="10 digit mobile number">
+            </div>
+            <button type="submit" class="btn-submit">Submit Application</button>
+        </form>
+    </div>
+</body>
+</html>
